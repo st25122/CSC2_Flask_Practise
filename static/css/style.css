@@ -43,6 +43,17 @@ h2 {
     margin-top: 0;
 }
 
+.flower-card {
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    margin-top: 16px;
+    padding: 18px;
+}
+
+.flower-card h3 {
+    margin-top: 0;
+}
+
 .invoice {
     overflow-x: auto;
 }

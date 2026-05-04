@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Rose",
+    "price": 10,
+    "stock": 50
+  },
+  {
+    "id": 2,
+    "name": "Tulips",
+    "price": 10,
+    "stock": 40
+  },
+  {
+    "id": 3,
+    "name": "Lily",
+    "price": 10,
+    "stock": 30
+  },
+  {
+    "id": 4,
+    "name": "Daisy",
+    "price": 10,
+    "stock": 100
+  }
+]

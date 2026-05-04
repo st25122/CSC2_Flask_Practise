@@ -18,6 +18,18 @@
     <main>
         <h1>Welcome to My Flask Website</h1>
         <p>Use the links above to visit the about me page or checkout page.</p>
+
+        <section>
+            <h2>Flowers</h2>
+
+            {% for flower in flowers %}
+                <article class="flower-card">
+                    <h3>{{ flower.name }}</h3>
+                    <p><strong>Price:</strong> ${{ flower.price }}</p>
+                    <p><strong>In stock:</strong> {{ flower.stock }}</p>
+                </article>
+            {% endfor %}
+        </section>
     </main>
 </body>
 </html>
