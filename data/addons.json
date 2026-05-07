@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Chocolate",
+    "price": 8
+  },
+  {
+    "name": "Teddy Bear",
+    "price": 15
+  },
+  {
+    "name": "Gift Card",
+    "price": 5
+  },
+  {
+    "name": "Balloon",
+    "price": 6
+  },
+  {
+    "name": "Vase",
+    "price": 20
+  }
+]

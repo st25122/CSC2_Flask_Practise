@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Invoices | Petal & Bloom{% endblock %}
+
+{% block content %}
+    <section class="page-intro">
+        <p class="eyebrow">Invoices</p>
+        <h1>Invoices</h1>
+        <p>
+            Invoice details will appear here when completed orders are added to
+            the application.
+        </p>
+    </section>
+
+    <section class="invoice-table">
+        <table>
+            <thead>
+                <tr>
+                    <th>Invoice</th>
+                    <th>Customer</th>
+                    <th>Status</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>INV-1001</td>
+                    <td>Example Customer</td>
+                    <td>Draft</td>
+                    <td>$0.00</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+{% endblock %}

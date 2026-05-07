@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Petal & Bloom{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Shared site header and navigation -->
+    <header class="site-header">
+        <nav class="navbar">
+            <a class="logo" href="{{ url_for('index') }}">Petal & Bloom</a>
+
+            <div class="nav-links">
+                <a href="{{ url_for('index') }}">Home</a>
+                <a href="{{ url_for('about') }}">About</a>
+                <a href="{{ url_for('order_history') }}">Order History</a>
+                <a href="{{ url_for('invoices') }}">Invoices</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Flash messages appear after actions like adding or removing cart items -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <section class="flash-wrapper" aria-label="Site messages">
+                {% for category, message in messages %}
+                    <p class="flash-message {{ category }}">{{ message }}</p>
+                {% endfor %}
+            </section>
+        {% endif %}
+    {% endwith %}
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Shared footer for every page -->
+    <footer class="site-footer">
+        <p>&copy; 2026 Petal & Bloom Flower Shop. Fresh flowers for everyday moments.</p>
+    </footer>
+</body>
+</html>

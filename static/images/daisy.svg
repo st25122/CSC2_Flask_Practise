@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" role="img" aria-label="Daisy bouquet">
+  <rect width="600" height="450" fill="#fffaf4"/>
+  <path d="M300 205 C290 270, 270 330, 250 402" fill="none" stroke="#2f6b4f" stroke-width="18" stroke-linecap="round"/>
+  <path d="M300 140 m-34 0 a34 80 0 1 0 68 0 a34 80 0 1 0 -68 0" fill="#ffffff" transform="rotate(0 300 140)"/>
+  <path d="M300 140 m-34 0 a34 80 0 1 0 68 0 a34 80 0 1 0 -68 0" fill="#ffffff" transform="rotate(45 300 140)"/>
+  <path d="M300 140 m-34 0 a34 80 0 1 0 68 0 a34 80 0 1 0 -68 0" fill="#ffffff" transform="rotate(90 300 140)"/>
+  <path d="M300 140 m-34 0 a34 80 0 1 0 68 0 a34 80 0 1 0 -68 0" fill="#ffffff" transform="rotate(135 300 140)"/>
+  <circle cx="300" cy="140" r="42" fill="#f7c948"/>
+</svg>

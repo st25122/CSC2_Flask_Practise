@@ -1,35 +1,101 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home | Flask Website</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-</head>
-<body>
-    <header>
-        <nav>
-            <a href="{{ url_for('index') }}">Home</a>
-            <a href="{{ url_for('about') }}">About Me</a>
-            <a href="{{ url_for('invoice') }}">Checkout</a>
-        </nav>
-    </header>
+{% extends "base.html" %}
 
-    <main>
-        <h1>Welcome to My Flask Website</h1>
-        <p>Use the links above to visit the about me page or checkout page.</p>
+{% block title %}Home | Petal & Bloom{% endblock %}
 
-        <section>
-            <h2>Flowers</h2>
+{% block content %}
+    <!-- Hero area introduces the flower shop and gives the page a real shop feel -->
+    <section class="hero">
+        <div class="hero-text">
+            <p class="eyebrow">Local flower shop</p>
+            <h1>Fresh bouquets, made with care.</h1>
+            <p>
+                Choose seasonal flowers, add them to your cart, and build a simple
+                order using beginner-friendly Flask session logic.
+            </p>
+        </div>
+    </section>
 
-            {% for flower in flowers %}
-                <article class="flower-card">
-                    <h3>{{ flower.name }}</h3>
-                    <p><strong>Price:</strong> ${{ flower.price }}</p>
-                    <p><strong>In stock:</strong> {{ flower.stock }}</p>
+    <!-- Main shopping layout -->
+    <section class="shop-layout">
+        <div class="catalog">
+            <div class="section-heading">
+                <p class="eyebrow">Shop flowers</p>
+                <h2>Available Bouquets</h2>
+            </div>
+
+            <div class="flower-grid">
+                {% for flower in flowers %}
+                    <article class="flower-card">
+                        <img src="{{ url_for('static', filename=flower.image) }}" alt="{{ flower.name }} bouquet">
+                        <div class="flower-card-body">
+                            <h3>{{ flower.name }}</h3>
+                            <p>${{ "%.2f"|format(flower.price) }}</p>
+                            <span>{{ flower.stock }} in stock</span>
+                        </div>
+                    </article>
+                {% endfor %}
+            </div>
+
+            <!-- Add to cart form posts to the Flask route named add_to_cart -->
+            <form class="order-form" action="{{ url_for('add_to_cart') }}" method="POST">
+                <h2>Create Your Bouquet</h2>
+
+                <label for="flower">Choose a flower</label>
+                <select id="flower" name="flower" required>
+                    {% for flower in flowers %}
+                        <option value="{{ flower.name }}">{{ flower.name }} - ${{ "%.2f"|format(flower.price) }}</option>
+                    {% endfor %}
+                </select>
+
+                <label for="quantity">Quantity</label>
+                <input id="quantity" name="quantity" type="number" min="1" value="1" required>
+
+                <button type="submit">Add to Cart</button>
+            </form>
+        </div>
+
+        <!-- Cart uses the session data passed in from app.py -->
+        <aside class="cart-panel">
+            <h2>Your Cart</h2>
+
+            {% if cart %}
+                <div class="cart-items">
+                    {% for item, details in cart.items() %}
+                        <article class="cart-item">
+                            <div>
+                                <h3>{{ item }}</h3>
+                                <p>Quantity: {{ details.quantity }}</p>
+                                <p>Subtotal: ${{ "%.2f"|format(details.quantity * details.price) }}</p>
+                            </div>
+                            <a class="remove-link" href="{{ url_for('remove_from_cart', item=item) }}">Remove</a>
+                        </article>
+                    {% endfor %}
+                </div>
+
+                <div class="cart-total">
+                    <span>Total</span>
+                    <strong>${{ "%.2f"|format(total) }}</strong>
+                </div>
+            {% else %}
+                <p class="empty-cart">Your cart is empty. Pick a bouquet to begin.</p>
+            {% endif %}
+        </aside>
+    </section>
+
+    <!-- Add-ons are displayed dynamically from addons.json -->
+    <section class="addons-section">
+        <div class="section-heading">
+            <p class="eyebrow">Finishing touches</p>
+            <h2>Popular Add-ons</h2>
+        </div>
+
+        <div class="addons-grid">
+            {% for addon in addons %}
+                <article class="addon-card">
+                    <h3>{{ addon.name }}</h3>
+                    <p>${{ "%.2f"|format(addon.price) }}</p>
                 </article>
             {% endfor %}
-        </section>
-    </main>
-</body>
-</html>
+        </div>
+    </section>
+{% endblock %}

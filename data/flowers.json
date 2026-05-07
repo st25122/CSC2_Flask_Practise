@@ -1,26 +1,38 @@
 [
   {
-    "id": 1,
     "name": "Rose",
-    "price": 10,
-    "stock": 50
+    "price": 12,
+    "stock": 48,
+    "image": "images/rose.svg"
   },
   {
-    "id": 2,
-    "name": "Tulips",
-    "price": 10,
-    "stock": 40
+    "name": "Tulip",
+    "price": 9,
+    "stock": 36,
+    "image": "images/tulip.svg"
   },
   {
-    "id": 3,
-    "name": "Lily",
-    "price": 10,
-    "stock": 30
-  },
-  {
-    "id": 4,
     "name": "Daisy",
-    "price": 10,
-    "stock": 100
+    "price": 7,
+    "stock": 64,
+    "image": "images/daisy.svg"
+  },
+  {
+    "name": "Sunflower",
+    "price": 11,
+    "stock": 28,
+    "image": "images/sunflower.svg"
+  },
+  {
+    "name": "Lily",
+    "price": 14,
+    "stock": 22,
+    "image": "images/lily.svg"
+  },
+  {
+    "name": "Orchid",
+    "price": 18,
+    "stock": 16,
+    "image": "images/orchid.svg"
   }
 ]

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" role="img" aria-label="Sunflower bouquet">
+  <rect width="600" height="450" fill="#f4fbf6"/>
+  <path d="M300 205 C310 275, 286 338, 270 408" fill="none" stroke="#2f6b4f" stroke-width="18" stroke-linecap="round"/>
+  <g fill="#f7c948">
+    <ellipse cx="300" cy="80" rx="32" ry="70"/>
+    <ellipse cx="300" cy="220" rx="32" ry="70"/>
+    <ellipse cx="230" cy="150" rx="70" ry="32"/>
+    <ellipse cx="370" cy="150" rx="70" ry="32"/>
+    <ellipse cx="250" cy="100" rx="32" ry="70" transform="rotate(-45 250 100)"/>
+    <ellipse cx="350" cy="100" rx="32" ry="70" transform="rotate(45 350 100)"/>
+    <ellipse cx="250" cy="200" rx="32" ry="70" transform="rotate(45 250 200)"/>
+    <ellipse cx="350" cy="200" rx="32" ry="70" transform="rotate(-45 350 200)"/>
+  </g>
+  <circle cx="300" cy="150" r="62" fill="#6b3f24"/>
+</svg>

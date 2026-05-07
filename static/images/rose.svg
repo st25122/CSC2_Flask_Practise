@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" role="img" aria-label="Rose bouquet">
+  <rect width="600" height="450" fill="#fffaf4"/>
+  <path d="M300 178 C282 250, 258 322, 236 400" fill="none" stroke="#2f6b4f" stroke-width="18" stroke-linecap="round"/>
+  <path d="M270 284 C210 260, 170 270, 140 318 C202 342, 244 326, 270 284Z" fill="#6fa37f"/>
+  <path d="M314 312 C372 286, 418 300, 454 352 C392 376, 348 358, 314 312Z" fill="#6fa37f"/>
+  <circle cx="300" cy="150" r="72" fill="#b94b63"/>
+  <circle cx="258" cy="130" r="45" fill="#d95f75"/>
+  <circle cx="342" cy="130" r="45" fill="#d95f75"/>
+  <circle cx="300" cy="100" r="42" fill="#f08aa0"/>
+  <circle cx="300" cy="150" r="30" fill="#8f3048"/>
+</svg>

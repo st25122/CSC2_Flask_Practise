@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" role="img" aria-label="Lily bouquet">
+  <rect width="600" height="450" fill="#fffaf4"/>
+  <path d="M300 198 C296 270, 278 336, 258 410" fill="none" stroke="#2f6b4f" stroke-width="18" stroke-linecap="round"/>
+  <path d="M300 178 C220 120, 198 82, 224 52 C292 78, 318 120, 300 178Z" fill="#ffffff"/>
+  <path d="M300 178 C380 120, 402 82, 376 52 C308 78, 282 120, 300 178Z" fill="#ffffff"/>
+  <path d="M300 178 C250 230, 202 238, 164 208 C210 154, 260 142, 300 178Z" fill="#f6bdc9"/>
+  <path d="M300 178 C350 230, 398 238, 436 208 C390 154, 340 142, 300 178Z" fill="#f6bdc9"/>
+  <path d="M300 178 C278 108, 284 58, 300 28 C320 58, 324 108, 300 178Z" fill="#ffffff"/>
+  <circle cx="300" cy="178" r="14" fill="#f7c948"/>
+</svg>

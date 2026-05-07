@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" role="img" aria-label="Orchid bouquet">
+  <rect width="600" height="450" fill="#f4fbf6"/>
+  <path d="M300 200 C318 270, 306 336, 292 410" fill="none" stroke="#2f6b4f" stroke-width="18" stroke-linecap="round"/>
+  <ellipse cx="300" cy="150" rx="52" ry="92" fill="#d6b3f2"/>
+  <ellipse cx="240" cy="158" rx="72" ry="46" fill="#c08de8" transform="rotate(-28 240 158)"/>
+  <ellipse cx="360" cy="158" rx="72" ry="46" fill="#c08de8" transform="rotate(28 360 158)"/>
+  <ellipse cx="275" cy="222" rx="56" ry="42" fill="#f6bdc9" transform="rotate(28 275 222)"/>
+  <ellipse cx="325" cy="222" rx="56" ry="42" fill="#f6bdc9" transform="rotate(-28 325 222)"/>
+  <circle cx="300" cy="184" r="30" fill="#fffaf4"/>
+  <circle cx="300" cy="184" r="12" fill="#b94b63"/>
+</svg>

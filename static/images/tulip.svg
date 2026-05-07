@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" role="img" aria-label="Tulip bouquet">
+  <rect width="600" height="450" fill="#f4fbf6"/>
+  <path d="M300 172 C288 245, 278 322, 260 405" fill="none" stroke="#2f6b4f" stroke-width="18" stroke-linecap="round"/>
+  <path d="M284 292 C226 250, 176 248, 128 292 C194 342, 250 340, 284 292Z" fill="#6fa37f"/>
+  <path d="M306 288 C366 244, 420 248, 472 300 C404 344, 344 338, 306 288Z" fill="#6fa37f"/>
+  <path d="M230 92 C260 98, 285 124, 300 176 C318 122, 342 98, 374 92 C372 190, 342 238, 300 244 C258 238, 228 190, 230 92Z" fill="#e45f88"/>
+  <path d="M300 70 C330 120, 328 180, 300 222 C272 180, 270 120, 300 70Z" fill="#f193aa"/>
+</svg>
