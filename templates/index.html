@@ -3,7 +3,6 @@
 {% block title %}Home | Petal & Bloom{% endblock %}
 
 {% block content %}
-    <!-- Hero area introduces the flower shop and gives the page a real shop feel -->
     <section class="hero">
         <div class="hero-text">
             <p class="eyebrow">Local flower shop</p>
@@ -15,7 +14,6 @@
         </div>
     </section>
 
-    <!-- Main shopping layout -->
     <section class="shop-layout">
         <div class="catalog">
             <div class="section-heading">
@@ -26,7 +24,6 @@
             <div class="flower-grid">
                 {% for flower in flowers %}
                     <article class="flower-card">
-                        <img src="{{ url_for('static', filename=flower.image) }}" alt="{{ flower.name }} bouquet">
                         <div class="flower-card-body">
                             <h3>{{ flower.name }}</h3>
                             <p>${{ "%.2f"|format(flower.price) }}</p>
@@ -36,7 +33,6 @@
                 {% endfor %}
             </div>
 
-            <!-- Add to cart form posts to the Flask route named add_to_cart -->
             <form class="order-form" action="{{ url_for('add_to_cart') }}" method="POST">
                 <h2>Create Your Bouquet</h2>
 
@@ -54,7 +50,6 @@
             </form>
         </div>
 
-        <!-- Cart uses the session data passed in from app.py -->
         <aside class="cart-panel">
             <h2>Your Cart</h2>
 
@@ -65,6 +60,7 @@
                             <div>
                                 <h3>{{ item }}</h3>
                                 <p>Quantity: {{ details.quantity }}</p>
+                                <p>Price: ${{ "%.2f"|format(details.price) }}</p>
                                 <p>Subtotal: ${{ "%.2f"|format(details.quantity * details.price) }}</p>
                             </div>
                             <a class="remove-link" href="{{ url_for('remove_from_cart', item=item) }}">Remove</a>
@@ -82,7 +78,6 @@
         </aside>
     </section>
 
-    <!-- Add-ons are displayed dynamically from addons.json -->
     <section class="addons-section">
         <div class="section-heading">
             <p class="eyebrow">Finishing touches</p>

@@ -2,37 +2,31 @@
   {
     "name": "Rose",
     "price": 12,
-    "stock": 48,
-    "image": "images/rose.svg"
+    "stock": 48
   },
   {
     "name": "Tulip",
     "price": 9,
-    "stock": 36,
-    "image": "images/tulip.svg"
+    "stock": 36
   },
   {
     "name": "Daisy",
     "price": 7,
-    "stock": 64,
-    "image": "images/daisy.svg"
+    "stock": 64
   },
   {
     "name": "Sunflower",
     "price": 11,
-    "stock": 28,
-    "image": "images/sunflower.svg"
+    "stock": 28
   },
   {
     "name": "Lily",
     "price": 14,
-    "stock": 22,
-    "image": "images/lily.svg"
+    "stock": 22
   },
   {
     "name": "Orchid",
     "price": 18,
-    "stock": 16,
-    "image": "images/orchid.svg"
+    "stock": 16
   }
 ]

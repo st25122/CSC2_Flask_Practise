@@ -8,7 +8,7 @@ app.secret_key = "flower-shop-learning-key"
 
 
 def load_data():
-    """Load flower and add-on data from the JSON files."""
+    """Read flower and add-on data from the JSON files."""
     with open("data/flowers.json", "r", encoding="utf-8") as flowers_file:
         flowers = json.load(flowers_file)
 
@@ -19,7 +19,7 @@ def load_data():
 
 
 def calculate_total(cart):
-    """Calculate the total price for every item currently in the cart."""
+    """Add up each cart item's price multiplied by its quantity."""
     total = 0
 
     for item in cart.values():
@@ -30,7 +30,7 @@ def calculate_total(cart):
 
 @app.route("/")
 def index():
-    """Show the home page, flowers, add-ons, and current cart."""
+    """Show flowers, add-ons, and the current session cart."""
     flowers, addons = load_data()
     cart = session.get("cart", {})
     total = calculate_total(cart)
@@ -47,14 +47,15 @@ def index():
 @app.route("/add_to_cart", methods=["POST"])
 def add_to_cart():
     """Add a selected flower and quantity to the session cart."""
-    flowers, addons = load_data()
+    flowers, _ = load_data()
     flower_name = request.form.get("flower")
-    quantity = int(request.form.get("quantity", 1))
+    quantity = request.form.get("quantity", 1, type=int) or 1
 
     selected_flower = None
     for flower in flowers:
         if flower["name"] == flower_name:
             selected_flower = flower
+            break
 
     if selected_flower is None:
         flash("That flower could not be found.", "error")
@@ -72,7 +73,6 @@ def add_to_cart():
         cart[flower_name] = {
             "quantity": quantity,
             "price": selected_flower["price"],
-            "image": selected_flower["image"],
         }
 
     session["cart"] = cart
@@ -104,22 +104,18 @@ def about():
     return render_template("about.html")
 
 
-@app.route("/order_history")
+@app.route("/orders")
 def order_history():
-    """Show a placeholder order history page."""
+    """Show the order history page for this lesson."""
     return render_template("order_history.html")
 
 
-@app.route("/invoices")
-def invoices():
-    """Show a placeholder invoices page."""
-    return render_template("invoices.html")
-
-
-@app.route("/test")
-def test():
-    """Show a simple test page for checking the Flask app."""
-    return render_template("test.html")
+@app.route("/checkout")
+def checkout():
+    """Show the checkout/invoice page without saving orders yet."""
+    cart = session.get("cart", {})
+    total = calculate_total(cart)
+    return render_template("invoice.html", cart=cart, total=total)
 
 
 if __name__ == "__main__":

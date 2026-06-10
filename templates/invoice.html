@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Checkout | Petal & Bloom{% endblock %}
+
+{% block content %}
+    <section class="page-intro">
+        <p class="eyebrow">Checkout</p>
+        <h1>Checkout</h1>
+        <p>This page shows the current cart total for Learning Guide 1.</p>
+    </section>
+
+    <section class="checkout-panel">
+        <h2>Current Cart</h2>
+
+        {% if cart %}
+            <div class="cart-items">
+                {% for item, details in cart.items() %}
+                    <article class="cart-item">
+                        <div>
+                            <h3>{{ item }}</h3>
+                            <p>Quantity: {{ details.quantity }}</p>
+                            <p>Price: ${{ "%.2f"|format(details.price) }}</p>
+                            <p>Subtotal: ${{ "%.2f"|format(details.quantity * details.price) }}</p>
+                        </div>
+                    </article>
+                {% endfor %}
+            </div>
+
+            <div class="cart-total">
+                <span>Total</span>
+                <strong>${{ "%.2f"|format(total) }}</strong>
+            </div>
+        {% else %}
+            <p class="empty-cart">Your cart is empty.</p>
+        {% endif %}
+    </section>
+{% endblock %}

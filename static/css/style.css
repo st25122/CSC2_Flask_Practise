@@ -183,22 +183,11 @@ main {
 .order-form,
 .info-card,
 .placeholder-panel,
-.invoice-table {
+.checkout-panel {
     background: var(--white);
     border: 1px solid #f0dfd9;
     border-radius: 8px;
     box-shadow: var(--shadow);
-}
-
-.flower-card {
-    overflow: hidden;
-}
-
-.flower-card img {
-    aspect-ratio: 4 / 3;
-    background: var(--mint);
-    object-fit: cover;
-    width: 100%;
 }
 
 .flower-card-body {
@@ -317,7 +306,7 @@ button:hover,
 .page-intro,
 .info-grid,
 .placeholder-panel,
-.invoice-table {
+.checkout-panel {
     margin-top: 36px;
 }
 
@@ -327,7 +316,8 @@ button:hover,
 
 .addon-card,
 .info-card,
-.placeholder-panel {
+.placeholder-panel,
+.checkout-panel {
     padding: 20px;
 }
 
@@ -345,27 +335,6 @@ button:hover,
 
 .info-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.invoice-table {
-    overflow-x: auto;
-    padding: 18px;
-}
-
-table {
-    border-collapse: collapse;
-    width: 100%;
-}
-
-th,
-td {
-    border-bottom: 1px solid #f0dfd9;
-    padding: 14px;
-    text-align: left;
-}
-
-th {
-    color: var(--leaf);
 }
 
 .site-footer {
