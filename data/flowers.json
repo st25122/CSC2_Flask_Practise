@@ -1,32 +1,7 @@
-[
-  {
-    "name": "Rose",
-    "price": 12,
-    "stock": 48
-  },
-  {
-    "name": "Tulip",
-    "price": 9,
-    "stock": 36
-  },
-  {
-    "name": "Daisy",
-    "price": 7,
-    "stock": 64
-  },
-  {
-    "name": "Sunflower",
-    "price": 11,
-    "stock": 28
-  },
-  {
-    "name": "Lily",
-    "price": 14,
-    "stock": 22
-  },
-  {
-    "name": "Orchid",
-    "price": 18,
-    "stock": 16
-  }
-]
+{
+    "Rose": {"price": 11, "stock": 50},
+    "Tulip": {"price": 7, "stock": 40},
+    "Lily": {"price": 12, "stock": 30},
+    "Daisy": {"price": 5, "stock": 100},
+    "Orchid": {"price": 20, "stock": 10}
+}

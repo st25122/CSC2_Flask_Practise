@@ -1,122 +1,77 @@
+from flask import Flask, render_template, request, redirect, url_for, session, flash
 import json
 
-from flask import Flask, flash, redirect, render_template, request, session, url_for
-
-
 app = Flask(__name__)
-app.secret_key = "flower-shop-learning-key"
+app.secret_key = 'your_secret_key'
 
 
 def load_data():
-    """Read flower and add-on data from the JSON files."""
-    with open("data/flowers.json", "r", encoding="utf-8") as flowers_file:
-        flowers = json.load(flowers_file)
-
-    with open("data/addons.json", "r", encoding="utf-8") as addons_file:
-        addons = json.load(addons_file)
-
+    with open('data/flowers.json') as file:
+        flowers = json.load(file)
+    with open('data/addons.json') as file:
+        addons = json.load(file)
     return flowers, addons
 
 
 def calculate_total(cart):
-    """Add up each cart item's price multiplied by its quantity."""
-    total = 0
-
-    for item in cart.values():
-        total += item["price"] * item["quantity"]
-
+    total = sum(item['price'] * item['quantity'] for item in cart.values())
     return total
 
 
-@app.route("/")
+@app.route('/', endpoint='home')
 def index():
-    """Show flowers, add-ons, and the current session cart."""
     flowers, addons = load_data()
-    cart = session.get("cart", {})
+    cart = session.get('cart', {})
     total = calculate_total(cart)
-
-    return render_template(
-        "index.html",
-        flowers=flowers,
-        addons=addons,
-        cart=cart,
-        total=total,
-    )
+    return render_template("index.html", flowers=flowers, addons=addons, cart=cart, total=total)
 
 
-@app.route("/add_to_cart", methods=["POST"])
-def add_to_cart():
-    """Add a selected flower and quantity to the session cart."""
-    flowers, _ = load_data()
-    flower_name = request.form.get("flower")
-    quantity = request.form.get("quantity", 1, type=int) or 1
-
-    selected_flower = None
-    for flower in flowers:
-        if flower["name"] == flower_name:
-            selected_flower = flower
-            break
-
-    if selected_flower is None:
-        flash("That flower could not be found.", "error")
-        return redirect(url_for("index"))
-
-    if quantity < 1:
-        flash("Please choose a quantity of at least 1.", "error")
-        return redirect(url_for("index"))
-
-    cart = session.get("cart", {})
-
-    if flower_name in cart:
-        cart[flower_name]["quantity"] += quantity
-    else:
-        cart[flower_name] = {
-            "quantity": quantity,
-            "price": selected_flower["price"],
-        }
-
-    session["cart"] = cart
-    session.modified = True
-    flash(f"{quantity} {flower_name} added to your cart.", "success")
-
-    return redirect(url_for("index"))
-
-
-@app.route("/remove_from_cart/<item>")
-def remove_from_cart(item):
-    """Remove one flower type from the session cart."""
-    cart = session.get("cart", {})
-
-    if item in cart:
-        cart.pop(item)
-        session["cart"] = cart
-        session.modified = True
-        flash(f"{item} removed from your cart.", "success")
-    else:
-        flash("That item was not in your cart.", "error")
-
-    return redirect(url_for("index"))
-
-
-@app.route("/about")
+@app.route('/about')
 def about():
-    """Show information about the flower shop."""
-    return render_template("about.html")
+    return render_template('about.html')
 
 
-@app.route("/orders")
-def order_history():
-    """Show the order history page for this lesson."""
-    return render_template("order_history.html")
-
-
-@app.route("/checkout")
+@app.route('/checkout')
 def checkout():
-    """Show the checkout/invoice page without saving orders yet."""
-    cart = session.get("cart", {})
-    total = calculate_total(cart)
-    return render_template("invoice.html", cart=cart, total=total)
+    return render_template('invoice.html')
 
 
-if __name__ == "__main__":
+@app.route('/orders')
+def order_history():
+    return render_template('order_history.html')
+
+
+@app.route('/add_to_cart', methods=['POST'])
+def add_to_cart():
+    flower = request.form['flower']
+    quantity = int(request.form['quantity'])
+    flowers, addons = load_data()
+    cart = session.get('cart', {})
+    if flower not in flowers:
+        flash("Invalid flower selected.")
+        return redirect(url_for('home'))
+    if flower in cart:
+        cart[flower]['quantity'] += quantity
+    else:
+        cart[flower] = {'price': flowers[flower]['price'], 'quantity': quantity}
+    session['cart'] = cart
+    session.modified = True
+    flash(f"{quantity} {flower}(s) added to cart.")
+    return redirect(url_for('home'))
+
+
+@app.route('/remove_from_cart/<item>')
+def remove_from_cart(item):
+    cart = session.get('cart', {})
+    if item in cart:
+        del cart[item]
+        session['cart'] = cart
+        session.modified = True
+        flash(f"{item} removed from cart.")
+    else:
+        flash("Item not found in cart.")
+    return redirect(url_for('home'))
+
+
+if __name__ == '__main__':
     app.run(debug=True)
