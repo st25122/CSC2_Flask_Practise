@@ -13,8 +13,9 @@ def load_data():
     return flowers, addons
 
 
-def calculate_total(cart):
+def calculate_total(cart, selected_addons):
     total = sum(item['price'] * item['quantity'] for item in cart.values())
+    total += sum(selected_addons.values())
     return total
 
 
@@ -22,8 +23,9 @@ def calculate_total(cart):
 def index():
     flowers, addons = load_data()
     cart = session.get('cart', {})
-    total = calculate_total(cart)
-    return render_template("index.html", flowers=flowers, addons=addons, cart=cart, total=total)
+    selected_addons = session.get('selected_addons', {})
+    total = calculate_total(cart, selected_addons)
+    return render_template("index.html", flowers=flowers, addons=addons, cart=cart, total=total, selected_addons=selected_addons)
 
 
 @app.route('/about')
@@ -57,6 +59,19 @@ def add_to_cart():
     session['cart'] = cart
     session.modified = True
     flash(f"{quantity} {flower}(s) added to cart.")
+    return redirect(url_for('home'))
+
+
+@app.route('/select_addon', methods=['POST'])
+def select_addon():
+    selected_addons = {}
+    _, addons = load_data()  # we only need addons
+    selected_keys = request.form.getlist('addons')
+    for addon in selected_keys:
+        if addon in addons:
+            selected_addons[addon] = float(addons[addon]['price'])
+    session['selected_addons'] = selected_addons
+    session.modified = True
     return redirect(url_for('home'))
 
 
